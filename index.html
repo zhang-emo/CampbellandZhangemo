@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>模块化聊天应用</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="c">
+
+    <!-- Header -->
+    <div class="h">
+        <div class="hi">
+            <div class="cn" id="ctName">Norton·Campbell</div>
+            <div class="st" id="contactStatus">在线</div>
+        </div>
+        <div class="header-actions">
+            <button id="nightModeToggle" class="sb">🌙</button>
+            <button id="stickerBtn" class="sb">😎</button>
+            <button id="callBtn" class="sb">📞</button>
+        </div>
+    </div>
+
+    <!-- Chat area -->
+    <div class="ma" id="ma"></div>
+
+    <!-- Input area -->
+    <div class="ia">
+        <input type="text" id="mi" class="mi" placeholder="输入消息...">
+        <button id="snd" class="snd">➤</button>
+    </div>
+
+    <!-- Sticker panel -->
+    <div class="sticker-panel" id="stickerPanel">
+        <input type="file" id="stickerFileInput" multiple accept="image/*" style="display:none;">
+        <div id="stickerGrid" class="card-list"></div>
+    </div>
+
+    <!-- Mailbox -->
+    <div id="mailbox">
+        <textarea id="letterContent" placeholder="写一封信..."></textarea>
+        <button id="sendLetterBtn">发送</button>
+        <div id="letterList"></div>
+    </div>
+
+    <!-- Call window -->
+    <div class="call-window" id="callWindow" style="display:none;">
+        <div class="call-header">
+            <span id="callTitle">通话中</span>
+            <button id="callHangup">挂断</button>
+        </div>
+        <div class="call-body">
+            <div id="callTimer">00:00:00</div>
+            <div class="call-avatar">🌿</div>
+        </div>
+    </div>
+
+    <!-- Card List -->
+    <div id="cardList" class="card-list"></div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
