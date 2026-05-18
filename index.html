@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>间隙</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="c">
+    <div class="h">
+        <div class="hi">
+            <div class="cn" id="cn">Norton·Campbell</div>
+            <div class="os"><span class="st" id="contactStatus">在线</span></div>
+        </div>
+        <div class="header-actions">
+            <button class="sb" id="mailboxBtn" title="信箱">📬</button>
+            <button class="sb" id="nightModeToggle" title="夜间模式">🌙</button>
+            <button class="sb" id="st" title="设置">⚙️</button>
+        </div>
+    </div>
+    <div class="sm" id="sm">
+        <div class="si" data-action="cs"><span class="ic">💬</span>聊天设置</div>
+        <div class="si" data-action="wb"><span class="ic">📇</span>字卡库</div>
+        <div class="si" data-action="theme"><span class="ic">🎨</span>主题</div>
+        <div class="si" data-action="history"><span class="ic">📋</span>聊天记录</div>
+        <div class="si" data-action="keepalive"><span class="ic">🔄</span>后台保活</div>
+    </div>
+    <div class="sp" id="sp">
+        <div class="ph"><button class="bb" id="bk">←</button><span class="pt">聊天设置</span></div>
+        <div class="sg">
+            <div class="sl">👤 自定义资料</div>
+            <div class="ir"><label>我的昵称</label><input type="text" id="mn" value="我"></div>
+            <div class="ar"><span style="flex:1">我的头像</span><button class="au" data-avatar="my">📷 上传图片</button><input type="file" id="mu" accept="image/*" style="display:none"></div>
+            <div class="ir"><label>对方昵称</label><input type="text" id="ctn" value="Norton·Campbell"></div>
+            <div class="ar"><span style="flex:1">对方头像</span><button class="au" data-avatar="ct">📷 上传图片</button><input type="file" id="ctu" accept="image/*" style="display:none"></div>
+        </div>
+        <div class="sg">
+            <div class="sl">⏳ 节奏</div>
+            <div class="sr"><span><span>回复速度</span><span id="rsv">3秒</span></span><input type="range" id="rs" min="1" max="1200" value="30"><div style="display:flex;justify-content:space-between"><span>1秒</span><span>2分钟</span></div></div>
+            <div class="tr"><label>开启主动私聊</label><input type="checkbox" id="at"></div>
+            <div class="sr" id="air" style="opacity:.5"><span><span>主动间隔</span><span id="aiv">10分钟</span></span><input type="range" id="ai" min="1" max="120" value="10" disabled><div style="display:flex;justify-content:space-between"><span>1分钟</span><span>2小时</span></div></div>
+            <div class="tr"><label>回复混入Emoji 😊</label><input type="checkbox" id="et" checked></div>
+        </div><button id="ap" style="background:#887B6E;border:none;border-radius:30px;padding:14px;color:#F7F2EC;font-weight:bold">应用设置</button>
+    </div>
+    <div class="wp" id="wp">
+        <div class="ph"><button class="bb" id="wbBack">←</button><span class="pt">字卡库</span></div>
+        <input class="search-box" id="wbSearch" placeholder="🔍 搜索字卡...">
+        <div class="tab-bar">
+            <div class="tab active" data-tab="text">主字卡</div>
+            <div class="tab" data-tab="emoji">Emoji</div>
+            <div class="tab" data-tab="image">表情包</div>
+            <div class="tab" data-tab="status">状态</div>
+        </div>
+        <div class="action-bar">
+            <div class="left-actions"><button class="circle-btn" id="wbImportText" title="导入文本">➕</button><button class="circle-btn" id="wbUploadImg" title="上传图片">🖼️</button></div>
+            <div class="right-actions"><button class="btn" id="wbExport">📤 导出</button><button class="btn" id="wbImportJSON">📥 导入</button></div>
+        </div>
+        <div class="import-area" id="importArea" style="display:none"><textarea id="importTextArea" rows="4" placeholder="每行一条..."></textarea><div style="display:flex;gap:8px;margin-top:8px"><button class="btn" id="confirmImport">确认导入</button><button class="btn" id="cancelImport">取消</button></div></div>
+        <div class="group-bar" id="groupBar"></div>
+        <div class="card-list" id="cardList"></div>
+        <input type="file" id="imgUploadInput" multiple accept="image/*" style="display:none">
+        <input type="file" id="jsonUploadInput" accept=".json,application/json" style="display:none">
+    </div>
+    <div class="tp" id="tp">
+        <div class="ph"><button class="bb" id="themeBack">←</button><span class="pt">主题</span></div>
+        <div class="sg">
+            <div class="sl">🎨 配色方案</div>
+            <div class="color-row"><span>网页背景</span><input type="color" id="bodyBgColor" value="#6B6058"><input type="text" class="hex-input" data-target="bodyBgColor" value="#6B6058"></div>
+            <div class="color-row"><span>主背景</span><input type="color" id="mainBgColor" value="#EFE9E3"><input type="text" class="hex-input" data-target="mainBgColor" value="#EFE9E3"></div>
+            <div class="color-row"><span>头部</span><input type="color" id="headerBgColor" value="#9B8E82"><input type="text" class="hex-input" data-target="headerBgColor" value="#9B8E82"></div>
+            <div class="color-row"><span>按钮</span><input type="color" id="btnBgColor" value="#C4B9AC"><input type="text" class="hex-input" data-target="btnBgColor" value="#C4B9AC"></div>
+            <div class="color-row"><span>输入栏</span><input type="color" id="inputBgColor" value="#BEB2A5"><input type="text" class="hex-input" data-target="inputBgColor" value="#BEB2A5"></div>
+            <div class="color-row"><span>我方气泡</span><input type="color" id="myBubbleBgColor" value="#E4D9CD"><input type="text" class="hex-input" data-target="myBubbleBgColor" value="#E4D9CD"></div>
+            <div class="color-row"><span>对方气泡</span><input type="color" id="contactBubbleBgColor" value="#F7F2EC"><input type="text" class="hex-input" data-target="contactBubbleBgColor" value="#F7F2EC"></div>
+            <div class="color-row"><span>强调色</span><input type="color" id="accentColor" value="#887B6E"><input type="text" class="hex-input" data-target="accentColor" value="#887B6E"></div>
+        </div>
+        <div class="sg">
+            <div class="sl">🔤 字体大小</div>
+            <div class="font-slider"><span>12px</span><input type="range" id="fontSizeSlider" min="12" max="20" value="16"><span>20px</span></div>
+            <div style="text-align:center;margin-top:5px"><span id="fontSizeValue">16px</span></div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:10px"><button id="applyThemeBtn" style="background:#887B6E;border:none;border-radius:30px;padding:14px;color:#F7F2EC;font-weight:bold;flex:2;cursor:pointer">应用主题</button><button id="resetThemeBtn" style="background:#C4B9AC;border:none;border-radius:30px;padding:14px;color:#1E2C0E;font-weight:bold;flex:1;cursor:pointer">恢复默认</button></div>
+    </div>
+    <div class="hp" id="hp">
+        <div class="ph"><button class="bb" id="hpBack">←</button><span class="pt">聊天记录</span></div>
+        <input class="search-box" id="historySearch" placeholder="🔍 搜索聊天记录...">
+        <div class="date-row"><input type="date" id="historyDate"><button class="btn" id="jumpDateBtn">跳转日期</button><button class="btn" id="clearDateFilter">❌</button></div>
+        <div style="display:flex;gap:8px;margin-bottom:12px"><button class="btn" id="exportHistoryBtn" style="flex:1">📤 导出JSON</button><button class="btn" id="importHistoryBtn" style="flex:1">📥 导入JSON</button></div>
+        <div style="display:flex;gap:8px;margin-bottom:12px"><button class="btn" id="clearAllHistoryBtn" style="flex:1; background:#e55a5a; color:#fff;">🗑️ 一键清除所有记录</button></div>
+        <input type="file" id="historyJSONInput" accept=".json,application/json" style="display:none">
+        <div id="historyList" style="flex:1;overflow-y:auto"></div>
+    </div>
+    <div class="kp" id="kp">
+        <div class="ph"><button class="bb" id="kpBack">←</button><span class="pt">后台保活</span></div>
+        <div class="sg">
+            <div class="sl">⚡ 后台保活设置</div>
+            <div class="tr"><label>启用后台常驻保活</label><input type="checkbox" id="keepAliveToggle"></div>
+            <div style="font-size:13px;color:#5A4E3E;margin-top:8px">启用后，页面将定时发送轻量网络请求以维持活跃状态，防止浏览器休眠或标签被卸载。</div>
+        </div>
+    </div>
+    <div class="mp" id="mp">
+        <div class="ph"><button class="bb" id="mbBack">←</button><span class="pt">信箱</span></div>
+        <div class="tab-bar">
+            <div class="mailbox-tab active" data-mtab="sent">已寄出</div>
+            <div class="mailbox-tab" data-mtab="inbox">收件箱</div>
+        </div>
+        <div style="margin:12px 0"><button class="btn" id="writeLetterBtn" style="display:block;width:100%">✍🏻 写信</button></div>
+        <div id="letterEditArea" style="display:none;margin-bottom:12px"><textarea id="letterContent" rows="6" placeholder="写下你想说的话..."></textarea><div style="display:flex;gap:8px;margin-top:8px"><button class="btn" id="sendLetterBtn">寄出</button><button class="btn" id="cancelLetterBtn">取消</button></div></div>
+        <div id="letterList" style="flex:1;overflow-y:auto"></div>
+    </div>
+    <div class="ma" id="ma"></div>
+    <div class="qb" id="qb" style="display:none">
+        <div class="qbc"><span>↩️ 引用</span><span class="qbt" id="qbt"></span></div><button class="qbx" id="qbx">✕</button>
+    </div>
+    <div class="ia"><button class="call-btn" id="callBtn" title="通话">📞</button><button class="img-btn" id="imgBtn" title="发送图片">🖼️</button><button class="rapid-reply-btn" id="rapidReplyBtn" title="连续主动回复">…</button><input class="mi" id="mi" placeholder="" autocomplete="off"><button class="sticker-btn" id="stickerBtn" title="表情包">😊</button><button class="snd" id="snd">➤</button><input type="file" id="chatImageInput" multiple accept="image/*,image/gif" style="display:none"><input type="file" id="stickerFileInput" multiple accept="image/*,image/gif" style="display:none">
+        <div class="sticker-panel" id="stickerPanel"><div class="sticker-grid" id="stickerGrid"></div><button class="add-sticker-btn" id="addStickerBtn">+ 上传表情包</button></div>
+    </div>
+    <div class="call-window" id="callWindow" style="display:none">
+        <div class="call-header" id="callHeader"><span id="callTitle">通话中</span><div><button class="call-minimize" id="callMin">—</button></div></div>
+        <div class="call-body" id="callBody">
+            <div class="call-avatar" id="callAvatar">🌿</div>
+            <div class="call-timer" id="callTimer">00:00:00</div><button class="call-hangup-btn" id="callHangup" title="挂断">📞</button>
+            <div class="incoming-actions" id="incActions" style="display:none"><button class="incoming-hangup" id="incHangup">✕</button><button class="incoming-accept" id="incAccept">📞</button></div>
+        </div>
+        <div class="call-minimized-bar" id="cmiBar"><span id="cmiTime">00:00:00</span><button class="call-restore" id="callRestore">+</button></div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
